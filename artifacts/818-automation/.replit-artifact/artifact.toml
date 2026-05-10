@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "818 Automation"
+version = "1.0.0"
+id = "artifacts/818-automation"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24650
+
+[services.development]
+run = "pnpm --filter @workspace/818-automation run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/818-automation", "run", "build" ]
+publicDir = "artifacts/818-automation/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24650"
+BASE_PATH = "/"
