@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import logo818 from "/logo.png";
+import { AuroraBackground } from '@/components/ui/aurora-background';
 
 // Variants for scroll animations
 const fadeUp = {
@@ -165,9 +166,13 @@ export default function Home() {
       </nav>
 
       <main className="pt-20">
-        {/* 2. HERO SECTION */}
-        <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 px-6 flex flex-col items-center text-center max-w-4xl mx-auto">
-          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="space-y-8">
+
+        {/* 2. HERO SECTION — wrapped in AuroraBackground */}
+        <AuroraBackground
+          className="relative pt-32 pb-24 md:pt-48 md:pb-32 px-6 min-h-[80vh]"
+          showRadialGradient={true}
+        >
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="space-y-8 text-center max-w-4xl mx-auto relative z-10">
             <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-bold tracking-tight leading-tight metallic-text">
               Scale Your Service Business <br className="hidden md:inline" />
               with AI Automations
@@ -188,7 +193,7 @@ export default function Home() {
               </a>
             </motion.div>
           </motion.div>
-        </section>
+        </AuroraBackground>
 
         {/* 3. "SOUND FAMILIAR?" SECTION */}
         <section id="about" className="py-24 px-6 bg-card/30 border-y border-border">
@@ -322,6 +327,7 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
         {/* 8. LEAD CAPTURE FORM */}
         <LeadForm />
       </main>
